@@ -1,7 +1,39 @@
 import React from 'react';
+import { Form, Input } from '@rocketseat/unform';
 
-// import { Container } from './styles';
+import logo from '../../assets/logo.svg';
 
 export default function ResetPassword() {
-  return <div />;
+  function handleSubmit({ email, password, confirmPassword }) {
+    console.tron.log(email, password, confirmPassword);
+  }
+
+  return (
+    <>
+      <img src={logo} alt="GYMPOINT" />
+
+      <Form onSubmit={handleSubmit}>
+        <label>
+          SEU E-MAIL
+          <Input type="email" name="email" placeholder="example@email.com" />
+        </label>
+
+        <label>
+          NOVA SENHA
+          <Input type="password" name="password" placeholder="***********" />
+        </label>
+
+        <label>
+          CONFIRME A SENHA
+          <Input
+            type="password"
+            name="confirmPassword"
+            placeholder="***********"
+          />
+        </label>
+
+        <button type="submit">Altere a minha senha</button>
+      </Form>
+    </>
+  );
 }

@@ -16,7 +16,7 @@ export default function Routes() {
   return (
     <Switch>
       <Route path="/" exact component={SignIn} />
-      <Route path="/forgot-password" component={ForgotPassword} />
+      <Route path="/forgot-password" exact component={ForgotPassword} />
       <Route path="/forgot-password/:token/reset" component={ResetPassword} />
 
       <Route path="/dashboard" component={Dashboard} isPrivate />

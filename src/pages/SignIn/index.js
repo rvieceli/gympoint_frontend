@@ -1,7 +1,33 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { Form, Input } from '@rocketseat/unform';
 
-// import { Container } from './styles';
+import logo from '../../assets/logo.svg';
 
 export default function SignIn() {
-  return <div />;
+  function handleSubmit({ email, password }) {
+    console.tron.log(email, password);
+  }
+
+  return (
+    <>
+      <img src={logo} alt="GYMPOINT" />
+
+      <Form onSubmit={handleSubmit}>
+        <label>
+          SEU E-MAIL
+          <Input type="email" name="email" placeholder="example@email.com" />
+        </label>
+
+        <label>
+          SUA SENHA
+          <Input type="password" name="password" placeholder="***********" />
+        </label>
+
+        <button type="submit">Entrar no sistema</button>
+
+        <Link to="/forgot-password">Esqueci a minha senha</Link>
+      </Form>
+    </>
+  );
 }
