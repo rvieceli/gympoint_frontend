@@ -1,5 +1,7 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
+
+import Route from './Route';
 
 import SignIn from '../pages/SignIn';
 import ForgotPassword from '../pages/ForgotPassword';
@@ -17,10 +19,10 @@ export default function Routes() {
       <Route path="/forgot-password" component={ForgotPassword} />
       <Route path="/forgot-password/:token/reset" component={ResetPassword} />
 
-      <Route path="/dashboard" component={Dashboard} />
-      <Route path="/students" component={Student} />
-      <Route path="/plans" component={Plan} />
-      <Route path="/registrations" component={Registration} />
+      <Route path="/dashboard" component={Dashboard} isPrivate />
+      <Route path="/students" component={Student} isPrivate />
+      <Route path="/plans" component={Plan} isPrivate />
+      <Route path="/registrations" component={Registration} isPrivate />
     </Switch>
   );
 }
