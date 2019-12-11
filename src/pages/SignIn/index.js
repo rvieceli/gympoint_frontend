@@ -4,6 +4,8 @@ import { Form, Input } from '@rocketseat/unform';
 
 import logo from '../../assets/logo.svg';
 
+import schema from './validation';
+
 export default function SignIn() {
   function handleSubmit({ email, password }) {
     console.tron.log(email, password);
@@ -13,7 +15,7 @@ export default function SignIn() {
     <>
       <img src={logo} alt="GYMPOINT" />
 
-      <Form onSubmit={handleSubmit}>
+      <Form schema={schema} onSubmit={handleSubmit}>
         <label>
           SEU E-MAIL
           <Input type="email" name="email" placeholder="example@email.com" />

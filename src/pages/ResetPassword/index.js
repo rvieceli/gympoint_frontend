@@ -3,6 +3,8 @@ import { Form, Input } from '@rocketseat/unform';
 
 import logo from '../../assets/logo.svg';
 
+import schema from './validation';
+
 export default function ResetPassword() {
   function handleSubmit({ email, password, confirmPassword }) {
     console.tron.log(email, password, confirmPassword);
@@ -12,7 +14,7 @@ export default function ResetPassword() {
     <>
       <img src={logo} alt="GYMPOINT" />
 
-      <Form onSubmit={handleSubmit}>
+      <Form schema={schema} onSubmit={handleSubmit}>
         <label>
           SEU E-MAIL
           <Input type="email" name="email" placeholder="example@email.com" />

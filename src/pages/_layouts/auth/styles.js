@@ -33,7 +33,7 @@ export const Content = styled.div`
     margin: 0 30px;
 
     label {
-      margin: 10px 0;
+      margin: 5px 0;
       text-align: start;
       font-weight: bold;
       color: #444;
@@ -47,11 +47,16 @@ export const Content = styled.div`
       border: 1px solid #ddd;
       color: #444;
       margin-top: 7px;
+      margin-bottom: 5px;
       padding: 0 15px;
 
       ::placeholder {
         color: #999;
       }
+    }
+
+    span {
+      color: #ee4d64;
     }
 
     button {
