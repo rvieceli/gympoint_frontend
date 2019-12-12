@@ -1,19 +1,24 @@
-import { all, takeLatest, call, put } from 'redux-saga/effects';
+import { all, takeLatest } from 'redux-saga/effects';
 import api from '../../../services/api';
 import history from '../../../services/history';
 
-import { SIGN_IN_REQUEST, signInSuccess } from './actions';
+import { SIGN_IN_SUCCESS } from './actions';
 
-export function* signIn({ payload }) {
-  const { email, password } = payload;
+export function setToken({ payload }) {
+  if (!payload) return;
 
-  const { data } = yield call(api.post, 'sessions', { email, password });
+  const { token } = payload.auth;
 
-  const { token, user } = data;
-
-  yield put(signInSuccess(token, user));
-
-  history.push('/dashboard');
+  if (token) {
+    api.defaults.headers.Authorization = `Bearer ${token}`;
+  }
 }
 
-export default all([takeLatest(SIGN_IN_REQUEST, signIn)]);
+export function signOut() {
+  history.push('/');
+}
+
+export default all([
+  takeLatest('persist/REHYDRATE', setToken),
+  takeLatest(SIGN_IN_SUCCESS, setToken),
+]);

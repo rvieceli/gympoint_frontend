@@ -57,6 +57,12 @@ export const Content = styled.div`
 
     span {
       color: #ee4d64;
+      font-weight: normal;
+    }
+
+    span.success {
+      color: #42cb59 !important;
+      font-weight: normal;
     }
 
     button {
@@ -87,6 +93,27 @@ export const Content = styled.div`
       &:hover {
         color: ${darken(0.2, '#ee4d64')};
       }
+    }
+  }
+
+  div.reseted-password {
+    margin: 0 20px;
+
+    > p {
+      color: #42cb59;
+    }
+
+    > a {
+      background: #42cb59;
+      color: #fff;
+      display: flex;
+      height: 45px;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 4px;
+      margin: 10px 0;
     }
   }
 `;
