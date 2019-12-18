@@ -26,6 +26,11 @@ export default createGlobalStyle`
     font: 14px 'Roboto', sans-serif;
   }
 
+  html.swal2-shown,
+  body.swal2-shwon {
+    overflow-y: auto !important;
+  }
+
   a {
     text-decoration: none;
   }
