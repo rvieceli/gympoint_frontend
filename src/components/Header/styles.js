@@ -76,9 +76,11 @@ export const Profile = styled.div`
     font-weight: bold;
   }
 
-  a {
+  button {
     font-size: 14px;
     color: #ee4d64;
+    border: none;
+    background: none;
 
     &:hover {
       color: ${darken(0.2, '#ee4d64')};

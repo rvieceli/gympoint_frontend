@@ -5,7 +5,9 @@ import Form from '../../../components/Form';
 import { Inline } from '../../../components/Inline';
 import Input from '../../../components/Input';
 
-export default function _form({ data, schema, onSubmit, title }) {
+import schema from './validation';
+
+export default function _form({ data, onSubmit, title }) {
   const [duration, setDuration] = useState(0);
   const [price, setPrice] = useState(0);
 
@@ -35,13 +37,13 @@ export default function _form({ data, schema, onSubmit, title }) {
         <Input
           title="DURAÇÃO (em meses)"
           name="duration"
-          number
+          type="number"
           onChange={e => setDuration(e)}
         />
         <Input
           title="PREÇO MENSAL"
           name="price"
-          number
+          type="number"
           scale={2}
           prefix="R$ "
           onChange={e => setPrice(e)}
@@ -49,7 +51,7 @@ export default function _form({ data, schema, onSubmit, title }) {
         <Input
           title="PREÇO TOTAL"
           name="total"
-          number
+          type="number"
           scale={2}
           prefix="R$ "
           value={total}
@@ -63,8 +65,6 @@ export default function _form({ data, schema, onSubmit, title }) {
 _form.propTypes = {
   title: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  schema: PropTypes.object,
   data: PropTypes.shape({
     duration: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -72,7 +72,6 @@ _form.propTypes = {
 };
 
 _form.defaultProps = {
-  schema: null,
   data: {
     duration: null,
     price: null,

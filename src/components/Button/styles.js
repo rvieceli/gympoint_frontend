@@ -45,7 +45,7 @@ export const CustomButton = styled.button`
     background: #4d85ee;
 
     &:hover {
-      background: ${darken(0.2, '#4D85EE')};
+      background: ${darken(0.2, '#4d85ee')};
     }
   }
 `;

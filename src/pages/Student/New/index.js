@@ -6,7 +6,6 @@ import history from '../../../services/history';
 import AlertActions from '../../../components/AlertActions';
 
 import Form from '../_form';
-import schema from './validation';
 
 export default function New() {
   async function handleSubmit({ name, email, age, weight, height }) {
@@ -23,7 +22,5 @@ export default function New() {
     });
   }
 
-  return (
-    <Form title="Cadastro de Aluno" schema={schema} onSubmit={handleSubmit} />
-  );
+  return <Form title="Cadastro de Aluno" onSubmit={handleSubmit} />;
 }

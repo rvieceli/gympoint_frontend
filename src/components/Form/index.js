@@ -46,10 +46,8 @@ export default function Form({ children, backUrl, onSubmit, title, ...rest }) {
 }
 
 Form.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.arrayOf(PropTypes.element),
-  ]).isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  children: PropTypes.any.isRequired,
   onSubmit: PropTypes.func.isRequired,
   backUrl: PropTypes.string,
   title: PropTypes.string.isRequired,

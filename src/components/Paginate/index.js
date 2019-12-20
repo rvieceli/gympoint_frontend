@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useLocation, Link } from 'react-router-dom';
 
 import {
   MdFirstPage,
@@ -14,44 +15,45 @@ import { Container } from './styles';
 export default function Paginate({ url, pages, page }) {
   const _page = parseInt(page, 10);
   const _pages = parseInt(pages, 10);
+  const queryString = useLocation().search || '';
 
   return (
     <>
       {_pages > 1 && (
         <Container>
-          <a href={`${url}/${1}`}>
-            <MdFirstPage size={24} color="#fff" />
-          </a>
+          <Link to={`${url}/${1}${queryString}`}>
+            <MdFirstPage size={24} />
+          </Link>
 
           {_page <= 1 ? (
             <div>
-              <MdChevronLeft size={24} color="#fff" />
+              <MdChevronLeft size={24} />
             </div>
           ) : (
-            <a href={`${url}/${_page - 1}`} disabled>
-              <MdChevronLeft size={24} color="#fff" />
-            </a>
+            <Link to={`${url}/${_page - 1}${queryString}`}>
+              <MdChevronLeft size={24} />
+            </Link>
           )}
 
           <strong>{page}</strong>
           <span>
-            <MdMoreHoriz size={24} color="#fff" />
+            <MdMoreHoriz size={24} />
             {pages}
           </span>
 
           {_page < _pages ? (
-            <a href={`${url}/${_page + 1}`}>
-              <MdChevronRight size={24} color="#fff" />
-            </a>
+            <Link to={`${url}/${_page + 1}${queryString}`}>
+              <MdChevronRight size={24} />
+            </Link>
           ) : (
             <div>
-              <MdChevronRight size={24} color="#fff" />
+              <MdChevronRight size={24} />
             </div>
           )}
 
-          <a href={`${url}/${pages}`}>
-            <MdLastPage size={24} color="#fff" />
-          </a>
+          <Link to={`${url}/${pages}${queryString}`}>
+            <MdLastPage size={24} />
+          </Link>
         </Container>
       )}
     </>

@@ -10,33 +10,40 @@ import Form from '../_form';
 
 export default function Edit({ match }) {
   const { id } = match.params;
-  const [student, setStudent] = useState(null);
+
+  const [registration, setRegistration] = useState(null);
 
   useEffect(() => {
     async function load() {
-      const { data } = await api.get(`students/${id}`);
-      setStudent(data);
+      const { data } = await api.get(`registrations/${id}`);
+      setRegistration(data);
     }
 
     load();
   }, [id]);
 
-  function handleSubmit({ name, email, age, weight, height }) {
+  function handleSubmit({ plan_id, student_id, startDate }) {
     AlertActions.save({
       call: () =>
-        api.put(`/students/${id}`, {
-          name,
-          email,
-          age,
-          weight,
-          height,
+        api.put(`/registrations/${id}`, {
+          plan_id,
+          student_id,
+          startDate,
         }),
-      success: () => history.push('/students'),
+      success: () => history.push('/registrations'),
     });
   }
 
   return (
-    <Form title="Edição de Aluno" onSubmit={handleSubmit} data={student} />
+    <>
+      {registration && (
+        <Form
+          title="Edição de Matrícula"
+          onSubmit={handleSubmit}
+          data={registration}
+        />
+      )}
+    </>
   );
 }
 

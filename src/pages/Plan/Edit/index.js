@@ -7,7 +7,6 @@ import history from '../../../services/history';
 import AlertActions from '../../../components/AlertActions';
 
 import Form from '../_form';
-import schema from './validation';
 
 export default function Edit({ match }) {
   const { id } = match.params;
@@ -39,14 +38,7 @@ export default function Edit({ match }) {
     });
   }
 
-  return (
-    <Form
-      title="Edição de Planos"
-      schema={schema}
-      onSubmit={handleSubmit}
-      data={plan}
-    />
-  );
+  return <Form title="Edição de Planos" onSubmit={handleSubmit} data={plan} />;
 }
 
 Edit.propTypes = {

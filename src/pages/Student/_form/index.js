@@ -5,7 +5,9 @@ import Form from '../../../components/Form';
 import { Inline } from '../../../components/Inline';
 import Input from '../../../components/Input';
 
-export default function _form({ data, schema, onSubmit, title }) {
+import schema from './validation';
+
+export default function _form({ data, onSubmit, title }) {
   return (
     <Form
       backUrl="/students"
@@ -27,15 +29,21 @@ export default function _form({ data, schema, onSubmit, title }) {
         placeholder="example@email.com"
       />
       <Inline>
-        <Input title="IDADE" number name="age" />
+        <Input title="IDADE" type="number" name="age" />
         <Input
           title="PESO (em kg)"
-          number
+          type="number"
           scale={1}
           suffix=" kg"
           name="weight"
         />
-        <Input title="ALTURA" number scale={2} suffix=" m" name="height" />
+        <Input
+          title="ALTURA"
+          type="number"
+          scale={2}
+          suffix=" m"
+          name="height"
+        />
       </Inline>
     </Form>
   );
@@ -44,8 +52,6 @@ export default function _form({ data, schema, onSubmit, title }) {
 _form.propTypes = {
   title: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  schema: PropTypes.object,
   data: PropTypes.shape({
     duration: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -53,7 +59,6 @@ _form.propTypes = {
 };
 
 _form.defaultProps = {
-  schema: null,
   data: {
     duration: null,
     price: null,

@@ -1,13 +1,13 @@
 import React from 'react';
-import { FaSearch } from 'react-icons';
+import { MdSearch } from 'react-icons/md';
 
-// import { Container } from './styles';
+import { Container } from './styles';
 
-export default function InputSearch() {
+export default function InputSearch({ ...rest }) {
   return (
-    <div>
-      <input type="text" name="search" id="search" />
-      <FaSearch />
-    </div>
+    <Container>
+      <input type="text" {...rest} />
+      <MdSearch />
+    </Container>
   );
 }

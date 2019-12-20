@@ -16,7 +16,6 @@ async function save({ call, success }) {
       success();
     });
   } catch (err) {
-    console.tron.log(err.response);
     Swal.fire({
       backdrop: false,
       allowOutsideClick: false,

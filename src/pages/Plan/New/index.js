@@ -6,8 +6,6 @@ import history from '../../../services/history';
 import Form from '../_form';
 import AlertActions from '../../../components/AlertActions';
 
-import schema from './validation';
-
 export default function New() {
   async function handleSubmit({ title, duration, price }) {
     AlertActions.save({
@@ -21,7 +19,5 @@ export default function New() {
     });
   }
 
-  return (
-    <Form title="Cadastro de Plano" schema={schema} onSubmit={handleSubmit} />
-  );
+  return <Form title="Cadastro de Plano" onSubmit={handleSubmit} />;
 }

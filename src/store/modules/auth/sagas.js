@@ -2,7 +2,7 @@ import { all, takeLatest } from 'redux-saga/effects';
 import api from '../../../services/api';
 import history from '../../../services/history';
 
-import { SIGN_IN_SUCCESS } from './actions';
+import { SIGN_IN_SUCCESS, SIGN_OUT } from './actions';
 
 export function setToken({ payload }) {
   if (!payload) return;
@@ -21,4 +21,5 @@ export function signOut() {
 export default all([
   takeLatest('persist/REHYDRATE', setToken),
   takeLatest(SIGN_IN_SUCCESS, setToken),
+  takeLatest(SIGN_OUT, signOut),
 ]);

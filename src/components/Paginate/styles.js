@@ -1,11 +1,12 @@
 import styled from 'styled-components';
+import { darken } from 'polished';
 
 export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #ee4d64;
 
+  margin-top: 10px;
   height: 35px;
 
   > strong {
@@ -14,7 +15,6 @@ export const Container = styled.div`
     font-weight: bold;
 
     color: #ee4d64;
-    background: #fff;
 
     display: inline-flex;
     align-items: center;
@@ -33,7 +33,7 @@ export const Container = styled.div`
     font-size: 14px;
     font-weight: bold;
 
-    color: #fff;
+    color: #ee4d64;
 
     display: inline-flex;
     align-items: center;
@@ -43,8 +43,25 @@ export const Container = styled.div`
   > a,
   > div {
     margin: 0 20px;
-    color: #fff;
     font-size: 16px;
     font-weight: bold;
+
+    height: 35px;
+    width: 35px;
+
+    background: #ee4d64;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    > svg {
+      color: #fff;
+    }
+  }
+
+  > a:hover {
+    background: ${darken(0.2, '#ee4d64')};
   }
 `;
