@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import InputNumber from '../InputNumber';
 import InputDate from '../InputDate';
 import InputSelect from '../InputSelect';
+import InputSelectAsync from '../InputSelectAsync';
 
 import { Label } from './styles';
 
@@ -34,13 +35,11 @@ export default function Input({
         );
 
       case 'select':
+        return <InputSelect name={name} placeholder={placeholder} {...rest} />;
+
+      case 'selectSync':
         return (
-          <InputSelect
-            name={name}
-            placeholder={placeholder}
-            height={45}
-            {...rest}
-          />
+          <InputSelectAsync name={name} placeholder={placeholder} {...rest} />
         );
 
       default:

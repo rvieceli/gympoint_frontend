@@ -9,5 +9,6 @@ export { default as LinkButton } from './LinkButton';
 export { default as Paginate } from './Paginate';
 export { default as InputSearch } from './InputSearch';
 export { default as Input } from './Input';
+export { default as InputSelect } from './InputSelect';
 export { default as EmptyPage } from './EmptyPage';
 export { default as LoadingPage } from './LoadingPage';

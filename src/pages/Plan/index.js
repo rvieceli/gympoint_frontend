@@ -32,7 +32,15 @@ export default function Plan({ match }) {
       params: { page, pageSize: 10 },
     });
 
-    setPlans(data);
+    const rows = data.rows.map(plan => ({
+      ...plan,
+      durationFormatted: `${plan.duration} ${
+        plan.duration === 1 ? 'mês' : 'meses'
+      }`,
+      priceFormatted: formatCurrency(plan.price),
+    }));
+
+    setPlans({ ...data, rows });
   }
 
   useEffect(() => {
@@ -75,10 +83,8 @@ export default function Plan({ match }) {
                 plans.rows.map(plan => (
                   <tr key={plan.id}>
                     <Item>{plan.title}</Item>
-                    <Item align="center">
-                      {plan.duration} {plan.duration === 1 ? 'mês' : 'meses'}
-                    </Item>
-                    <Item align="center">{formatCurrency(plan.price)}</Item>
+                    <Item align="center">{plan.durationFormatted}</Item>
+                    <Item align="center">{plan.priceFormatted}</Item>
                     <Options>
                       <Link
                         color="blue"

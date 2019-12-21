@@ -2,9 +2,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { subDays, addMonths, parseISO } from 'date-fns';
 
-import Form from '../../../components/Form';
-import { Inline } from '../../../components/Inline';
-import Input from '../../../components/Input';
+import { Form, Inline, Input } from '../../../components';
 
 import api from '../../../services/api';
 
@@ -14,15 +12,12 @@ export default function _form({ data, onSubmit, title }) {
   const [startDate, setStartDate] = useState(null);
   const [plan, setPlan] = useState(null);
   const [plans, setPlans] = useState([]);
-  const [students, setStudents] = useState([]);
 
   useEffect(() => {
     async function load() {
       const responsePlans = await api.get(`/plans`);
-      const responseStudents = await api.get(`/students`);
 
       setPlans(responsePlans.data.rows);
-      setStudents(responseStudents.data.rows);
     }
 
     load();
@@ -47,6 +42,18 @@ export default function _form({ data, onSubmit, title }) {
     return subDays(addMonths(startDate, plan.duration), 1);
   }, [plan, startDate]);
 
+  function loadOptions(inputValue, cb) {
+    api
+      .get(`/students`, {
+        params: {
+          q: inputValue,
+        },
+      })
+      .then(response => {
+        cb(response.data.rows);
+      });
+  }
+
   return (
     <Form
       backUrl="/registrations"
@@ -55,16 +62,16 @@ export default function _form({ data, onSubmit, title }) {
       onSubmit={onSubmit}
       initialData={data}
     >
-      {students.length > 0 && (
-        <Input
-          title="ALUNO"
-          name="student_id"
-          type="select"
-          placeholder="Buscar Aluno"
-          labelTitle="name"
-          options={students}
-        />
-      )}
+      <Input
+        title="ALUNO"
+        name="student_id"
+        type="selectSync"
+        placeholder="Buscar Aluno"
+        labelTitle="name"
+        loadOptions={loadOptions}
+        defaultOptions
+        defaultValue={(data && data.student) || null}
+      />
       <Inline>
         {plans.length > 0 && (
           <Input

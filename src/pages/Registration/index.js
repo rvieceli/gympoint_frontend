@@ -35,8 +35,8 @@ export default function Registration({ match }) {
 
     const rows = data.rows.map(registration => ({
       ...registration,
-      startDate: formatDate(registration.startDate),
-      endDate: formatDate(registration.endDate),
+      startDateFormatted: formatDate(registration.startDate),
+      endDateFormatted: formatDate(registration.endDate),
     }));
 
     setRegistrations({ ...data, rows });
@@ -89,8 +89,10 @@ export default function Registration({ match }) {
                   <tr key={registration.id}>
                     <Item>{registration.student.name}</Item>
                     <Item align="center">{registration.plan.title}</Item>
-                    <Item align="center">{registration.startDate}</Item>
-                    <Item align="center">{registration.endDate}</Item>
+                    <Item align="center">
+                      {registration.startDateFormatted}
+                    </Item>
+                    <Item align="center">{registration.endDateFormatted}</Item>
                     <Item align="center">
                       <MdCheckCircle
                         size={20}

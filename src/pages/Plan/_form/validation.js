@@ -4,8 +4,9 @@ export default Yup.object().shape({
   title: Yup.string().required(),
   duration: Yup.number()
     .integer()
+    .positive()
     .required(),
   price: Yup.number()
-    .integer()
+    .positive()
     .required(),
 });
