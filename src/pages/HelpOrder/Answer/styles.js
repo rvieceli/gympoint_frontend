@@ -35,6 +35,10 @@ export const Container = styled.div`
       margin-bottom: 20px;
 
       width: 390px;
+      min-height: 50px;
+      max-height: 150px;
+      white-space: break-spaces;
+      overflow: auto;
     }
 
     > textarea {

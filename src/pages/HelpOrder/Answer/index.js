@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import { Container } from './styles';
 
@@ -23,8 +24,14 @@ export default function Answer({ helpOrder: { question, id }, onExit }) {
     }
   }
 
+  function handleClose(event) {
+    if (event.target.id !== 'answerModal') return;
+
+    onExit(true);
+  }
+
   return (
-    <Container>
+    <Container id="answerModal" onClick={handleClose}>
       <div>
         <strong>PERGUNTA DO ALUNO</strong>
         <p>{question}</p>
@@ -41,3 +48,11 @@ export default function Answer({ helpOrder: { question, id }, onExit }) {
     </Container>
   );
 }
+
+Answer.propTypes = {
+  helpOrder: PropTypes.shape({
+    question: PropTypes.string,
+    id: PropTypes.number,
+  }).isRequired,
+  onExit: PropTypes.func.isRequired,
+};

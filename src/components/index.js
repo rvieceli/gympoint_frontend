@@ -12,3 +12,5 @@ export { default as Input } from './Input';
 export { default as InputSelect } from './InputSelect';
 export { default as EmptyPage } from './EmptyPage';
 export { default as LoadingPage } from './LoadingPage';
+export { default as LastCheckIns } from './LastCheckIns';
+export { default as Statistics } from './Statistics';
