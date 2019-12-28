@@ -1,25 +1,25 @@
-# Gympoint Frontend
+# Gympoint Mobile
 
-Frontend da aplicação __Gympoint__ para avaliação final do GoStack.
+App Mobile da aplicação __Gympoint__ para avaliação final do GoStack.
 
 
 ## Como usar
 
 ```
 # Clone repository
-$ git clone https://github.com/rvieceli/gympoint_frontend.git
+$ git clone https://github.com/rvieceli/gympoint_mobile.git
 
 # Enter repository folder
-$ cd gympoint_frontend
+$ cd gympoint_mobile
 
 # Install dependencies
 $ yarn
 
 # Create .env based on .env.example
-- REACT_APP_BASE_URL=http://localhost:3000
-- REACT_APP_API_URL=http://localhost:3333
+# open android or ios emulator
 
 # Run application
-$ yarn start
+$ npx react-native run-android
+$ npx react-native run-ios
 
 ```
